@@ -1,5 +1,6 @@
 package dev.vitorzucon.controller;
 
+import dev.vitorzucon.DTOs.ProductMaxProductionDTO;
 import dev.vitorzucon.DTOs.ProductRequestDTO;
 import dev.vitorzucon.DTOs.ProductResponseDTO;
 import dev.vitorzucon.DTOs.SupplyItemResponseDTO;
@@ -59,6 +60,13 @@ public class ProductController {
     public Response deleteById(@PathParam("id") Long id) {
         productService.delete(id);
         return Response.notModified().build();
+    }
+
+    @GET
+    @Path("/production")
+    public List<ProductMaxProductionDTO> findMaxProduction(@QueryParam("page") @DefaultValue("0") Integer page,
+                                                           @QueryParam("linesPerPage") @DefaultValue("10") Integer linesPerPage) {
+        return productService.findMaxProduction(page, linesPerPage);
     }
 
     private ProductResponseDTO ProductEntitytoDTO(ProductEntity product) {

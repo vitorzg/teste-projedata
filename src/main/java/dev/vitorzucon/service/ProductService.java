@@ -1,5 +1,6 @@
 package dev.vitorzucon.service;
 
+import dev.vitorzucon.DTOs.ProductMaxProductionDTO;
 import dev.vitorzucon.DTOs.ProductRequestDTO;
 import dev.vitorzucon.DTOs.SupplyItemRequestDTO;
 import dev.vitorzucon.entity.ProductEntity;
@@ -113,5 +114,9 @@ public class ProductService {
 
         ProductEntity product = findById(id);
         product.setActive(false);
+    }
+
+    public List<ProductMaxProductionDTO> findMaxProduction(Integer page, Integer linesPerPage) {
+        return productRepository.findMaxProduction(page, linesPerPage);
     }
 }
