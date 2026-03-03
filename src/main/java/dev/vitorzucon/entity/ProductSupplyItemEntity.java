@@ -1,5 +1,6 @@
 package dev.vitorzucon.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -19,7 +20,7 @@ public class ProductSupplyItemEntity {
     private SupplyEntity supply;
 
     @Column(nullable = false)
-    private Double quantity;
+    private Integer quantity;
 
     public SupplyEntity getSupply() {
         return supply;
@@ -35,5 +36,13 @@ public class ProductSupplyItemEntity {
 
     public void setProduct(ProductEntity product) {
         this.product = product;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

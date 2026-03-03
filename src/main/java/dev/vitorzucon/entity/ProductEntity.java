@@ -1,5 +1,6 @@
 package dev.vitorzucon.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.ws.rs.DefaultValue;
 
@@ -19,7 +20,7 @@ public class ProductEntity {
     private Double price;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductSupplyItemEntity> supplyItems = new ArrayList<>();
+    public List<ProductSupplyItemEntity> supplyItems = new ArrayList<>();
 
     @Column(nullable = false)
     private boolean active = true;

@@ -39,10 +39,9 @@ public class SupplyService {
         return supply;
     }
 
-    public SupplyEntity delete(Long id) {
+    public void delete(Long id) {
         var supply = findById(id);
         supply.setActive(false);
         supplyRepository.persist(supply);
-        return supply;
     }
 }
